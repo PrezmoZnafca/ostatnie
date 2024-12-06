@@ -1,0 +1,469 @@
+<!-- Aplikacja jest wykonana w celach edukacyjnych. Nie odpowiadamy za to jak jest uzywana! -->
+                  
+
+<!DOCTYPE html>
+<html lang="PL-pl"></html>
+
+
+<head>
+
+    <!-- Metadane -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#F5F6FB">
+
+    <!-- Nazwa strony -->
+    <title>mObywatel 2.0</title>
+
+    <!-- Ikona strony -->
+    <link rel="shortcut icon" href="coi_common_ui_ic_mobywatel_logo.svg" type="image/x-icon">
+
+    <!-- Wyświetlanie strony w IOS -->
+
+    <meta name="next-head-count" content="5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Manifest i Service Worker -->
+    <link rel="manifest" href="manifest.json">
+    <script src="hmobywatel/sw.html"></script>
+
+    <!-- PLIKI CSS -->
+    <link rel="stylesheet" href="legitymacja.css">
+    <link rel="stylesheet" href="main.css" as="style">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+
+    <!-- PLIK JS -->
+    <script src="../../../code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <noscript data-n-css=""></noscript>
+    <script>
+        window.addEventListener("load", function() {
+    // Ukrywanie paska adresu na iOS
+    if ("standalone" in window.navigator && window.navigator.standalone) {
+        var a = document.getElementsByTagName("a");
+        for (var i = 0; i < a.length; i++) {
+            a[i].addEventListener("click", function(event) {
+                var newLocation = this.href;
+                event.preventDefault();
+                window.location = newLocation;
+            }, false);
+        }
+    }
+    
+    // Alternatywne podejÄŹĹĽËťcie do ukrywania paska adresu
+    setTimeout(function() {
+        window.scrollTo(0, 1);
+    }, 0);
+});
+
+    </script>
+    <style>
+  body {
+    overscroll-behavior: contain;
+    animation: slideIn 0.4s ease-out;
+    overflow-x: hidden;
+}
+
+/* Dodajemy reguÄŹĹĽËťy dla pionowego przewijania */
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+/* header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+} */
+
+
+@supports (-webkit-touch-callout: none) {
+    .dzit {
+        margin-bottom: 1.0rem;
+    }
+}
+
+.photo {
+    position: relative;
+    filter: grayscale(100%);
+    z-index: 1;
+    display: block;
+}
+
+.photo-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    scale: 1.00; /* Ustawienie skali na 1.00, aby nie powiększać elementu */
+}
+
+
+
+#gradient {
+    /* position: relative;
+    bottom: 10px;
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    color: #f1f1f1;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    padding: 6px;
+    text-align: center;
+    z-index: 2;
+    border-radius: 0 0 0.5rem 0.5rem;
+    margin: 0; */
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+@keyframes slideIn {
+    from {
+        transform: translateX(0%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+}
+
+        /* Stylizacja responsywna */
+        @media (max-width: 768px) {
+            .Documents_container__SBKda {
+                padding: 10px;
+            }
+        }
+
+        /* Dolny pasek nawigacyjny */
+        .BottomNav_bottomNav__JQdpA {
+            width: 100%;
+            height: 90px;
+            position: fixed;
+            bottom: 0;
+            background-color: #f5f6fb;
+            border-top: 1px solid #d6d6d6;
+            z-index: 99;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            left: 0;
+        }
+
+        .BottomNav_bnTab__WzkWH {
+            width: 35%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 10px;
+        }
+
+        .BottomNav_bnTab__WzkWH img {
+            height: 35px;
+            margin-bottom: 4px;
+        }
+
+        .BottomNav_bnTab__WzkWH span {
+            font-size: .7em;
+            font-weight: 300;
+        }
+
+        .BottomNav_activeText__6iAIF {
+            color: var(--blue-active);
+        }
+
+        /* Stylizacja dla klikniÄ™cia */
+        .BottomNav_bnTab__WzkWH img:active,
+        .BottomNav_bnTab__WzkWH img:focus,
+        .BottomNav_bnTab__WzkWH:active,
+        .BottomNav_bnTab__WzkWH:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .BottomNav_bnTab__WzkWH {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #wi1 {
+            background-image: url('warstwa_1.png'); /* Wstaw tutaj rzeczywisty link do obrazu */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 351px;
+            height: 241.98px;
+            padding: 32px 36px;
+        }
+        #wi2 {
+            background-image: url('warstwa_2.png'); /* Wstaw tutaj rzeczywisty link do obrazu */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 351px;
+            height: 241.98px;
+            padding: 32px 36px;
+        }
+    </style>
+<script src="../../../code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+
+<body class="">   
+    <header>
+        <a href="home.html">
+            <img src="pozdro.svg" alt="leftarrow">
+        </a>
+        <span style="font-family: 'Inter'; font-weight: 900; position: relative; left: -6%;">Legitymacja studencka</span>
+        <img style="width: 25px; height: 25px;" src="madziamojakotka123.svg" alt="">
+    </header>
+
+<p class="czas">Czas: 20:32:33 15.05.2024</p>
+    <script src="timenew.js"></script>
+
+    <!-- Sekcja związana z dowodem -->
+    <main>
+        <section id="lew">
+            <img src="https://imgur.com/mkmgqnf.jpg" class="object-contain w-full rounded-lg photo" style="margin: 0;" alt="Zdjęcie nieprawidłowe!">
+
+            <img class="photo-border" src="border.png" alt="">
+            <div id="gradient"></div>
+
+            <img src="polish_flag.gif" alt="flaga" id="flaga" style="margin: 0; margin-top: 13px;">
+            <div id="rzecz" style="margin: 0; margin-top: 10px;">
+<div id="niggson"></div>
+<video id="godlo" autoplay loop muted>
+                    <source src="111.webm" type="video/webm">
+                    Twoje urządzenie nie wspiera wideo.
+                </video>
+            </body>
+                <p style="margin-left: 7px;">Rzeczpospolita<br>Polska</p>
+            </div>
+        </section>
+
+<script>
+        // Pobieranie elementu wideo
+        const videoElement = document.getElementById("godlo");
+
+        // Funkcja uruchamiająca video
+        const playVideo = () => {
+            videoElement.style.visibility = "visible";
+            videoElement.play();
+        };
+
+        // Funkcja zatrzymująca video
+        const stopVideo = () => {
+            videoElement.pause();
+        };
+
+        // Inicjalizacja zmiennych do detekcji zmian w żyroskopie
+        let lastAlpha = 0;
+        let lastBeta = 0;
+        let lastGamma = 0;
+
+        // Funkcja do detekcji zmiany w żyroskopie
+        const detectMovement = (event) => {
+            const { alpha, beta, gamma } = event;
+
+            // Sprawdzamy, czy zmieniły się wartości żyroskopu
+            if (
+                Math.abs(alpha - lastAlpha) > 5 || // zmiana w osi X (lewo/prawo)
+                Math.abs(beta - lastBeta) > 5 || // zmiana w osi Y (przód/tył)
+                Math.abs(gamma - lastGamma) > 5   // zmiana w osi Z (obrót)
+            ) {
+                // Jeśli tak, odtwarzamy wideo
+                playVideo();
+            } else {
+                // Jeśli nie, zatrzymujemy wideo
+                stopVideo();
+            }
+
+            // Aktualizacja ostatnich wartości żyroskopu
+            lastAlpha = alpha;
+            lastBeta = beta;
+            lastGamma = gamma;
+        };
+
+        // Sprawdzamy dostępność żyroskopu
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener("deviceorientation", detectMovement, true);
+        } else {
+            alert("Twoje urządzenie nie obsługuje żyroskopu.");
+        }
+    </script>
+	
+	
+
+        <!-- Dane na dowodzie -->
+        <section id="praw">
+            <div class="cwel">
+                <span class="title">
+                    PRZEMYSŁAWv18
+                </span>
+                <span class="description">
+                    Imię (imiona)
+                </span>
+            </div>
+            <div class="cwel">
+                <span class="title">
+                    ŻARKOWSKI
+                </span>
+                <span class="description">
+                    Nazwisko
+                </span>
+            </div>
+            <div class="cwel">
+                <span class="title">
+                    27.11.2004
+                </span>
+                <span class="description">
+                    Data urodzenia
+                </span>
+            </div>
+            <div class="cwel">
+                <span class="title">
+                    04312701532
+                </span>
+                <span class="description">
+                    Numer PESEL
+                </span>
+            </div>
+            <div class="cwel">
+                <span class="title">
+                    15.11.2024                
+                </span>
+                <span class="description">
+                    Data wydania
+                </span>
+</div>
+            <div class="cwel">
+                <span class="title">
+                  AKADEMIA LEONA KOŹMIŃSKIEGO W WARSZAWIE   
+                </span>
+                <span class="description">
+                    Nazwa Uczelni
+                </span>
+
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Sekcja z dokumentem ważnym -->
+    <section id="bottom">
+        <img src="checkmark.svg" alt="checkmark">
+        <p>Dokument ważny</p>
+    </section>
+
+
+    <!-- Sekcja z potwierdz swoje dane i dane dokumentu + zdjecia -->
+    <a class="buto" style="cursor: pointer; display: flex; align-items: center; padding: 40px 20px ; border-radius: 10px; background-color: white; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <img style="width: 35px;" src="checkbo.png" alt="checkbox">
+        <p style="margin-left: 10px; font-weight: bold;">Potwierdź swoje dane</p>
+        <img style="width: 25px;" src="arrow.svg" alt="arrow" id="arrow">
+    </a>
+
+    
+  
+
+    <a class="buto" style="cursor: pointer; display: flex; align-items: center; padding: 40px 20px ; border-radius: 10px; background-color: white; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <div>
+            <p class="info">Numer albumu</p>
+            <p class="main">48738</p>
+        </div>
+        
+    </a>
+     
+
+    <!-- Przycisk "Aktualizuj" -->
+<a class="buto" style="cursor: pointer; display: flex; align-items: center; padding: 40px 20px; border-radius: 10px; background-color: white; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+    <div>
+        <p class="info">Ostatnia aktualizacja</p>
+        <p id="sukadziwkakurwa" class="main">17.10.2024</p>
+    </div>
+    <button id="aktualizuj">Aktualizuj</button>
+</a>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <p>Twoje dane są aktualne</p>
+        <!-- Przycisk zamknięcia ✕ -->
+        <span class="close-btn">✕</span>
+    </div>
+</div>
+
+
+
+<script>
+    // Pobieramy przycisk "Aktualizuj" oraz modal
+    const aktualizujPrzycisk = document.getElementById('aktualizuj');
+    const modal = document.getElementById('modal');
+
+    // Po kliknięciu w przycisk "Aktualizuj" pokazujemy modal
+    aktualizujPrzycisk.addEventListener('click', () => {
+        modal.style.display = 'block'; // Modal stanie się widoczny
+
+        // Ukrycie modala po 5 sekundach
+        setTimeout(() => {
+            modal.style.display = 'none'; // Ukrycie modala
+        }, 3000); // 5000 ms = 5 sekund
+    });
+</script>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <a class="buto" style="cursor: pointer; display: flex; align-items: center; padding: 10px 20px; border-radius: 10px; background-color: white; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-decoration: none; font-family: Arial, sans-serif;" onclick="confirmDelete()">
+        <i class="fa-regular fa-trash-can" style="color: red; margin-right: 10px;"></i>
+        <span style="color: red; font-size: 16px; font-weight: 550;">Usuń dokument</span>
+
+    </a>
+
+
+<a class="buto" style="cursor: pointer; display: flex; align-items: center; padding: 80px 45px ; border-radius: 5px; background-color: #E7F2FF; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <div>
+            <p class="main">Legitymacja uprawnia do zniżek</p>
+			<p class="main">na przejazdy:</p>
+            <p class="info"><li>komunikacją miejską (50%),</p>	
+	    <p class="info"><li>kolejowym i autobusowym publicznym</p>
+         <p class="info"><p>transportem zbiorowym (do 26. roku życia).</p>
+        </div>
+        <img src="iznak.png" alt="Ikona" class="znizki-ikona" />
+    </a>
+
+
+<div class="spacer"></div>
+
+        
+
+    <script src="wybor.js"></script>
+    <script src="scale.js"></script>
+
+</body>
+
+
+</html>
+
+<!-- Aplikacja jest wykonana w celach edukacyjnych. Nie odpowiadamy za to jak jest uzywana! -->

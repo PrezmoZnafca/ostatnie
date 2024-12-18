@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html lang="PL-pl"></html>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="wybor.js"></script>
+
 
 <head>
 
@@ -36,7 +39,7 @@
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 
     <!-- PLIK JS -->
-    <script src="../../../code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="jquery-3.7.1.min.js"></script>
 
     <noscript data-n-css=""></noscript>
     <script>
@@ -224,7 +227,7 @@ body, html {
         }
     </style>
   <link rel="stylesheet" href="dowodnowy.css">
-<script src="../../../code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="jquery-3.7.1.min.js"></script>
   </head>
 
 <body class="">   
@@ -250,11 +253,65 @@ body, html {
             <img src="polish_flag.gif" alt="flaga" id="flaga" style="margin: 0; margin-top: 13px;">
             <div id="rzecz" style="margin: 0; margin-top: 10px;">
 <div id="niggson"></div>
-<img src="godlo.gif" alt="godlo" id="godlo">
+<video id="godlo" autoplay loop muted>
+                    <source src="111.webm" type="video/webm">
+                    Twoje urządzenie nie wspiera wideo.
+                </video>
             </body>
                 <p style="margin-left: 7px;">Rzeczpospolita<br>Polska</p>
             </div>
         </section>
+
+<script>
+        // Pobieranie elementu wideo
+        const videoElement = document.getElementById("godlo");
+
+        // Funkcja uruchamiająca video
+        const playVideo = () => {
+            videoElement.style.visibility = "visible";
+            videoElement.play();
+        };
+
+        // Funkcja zatrzymująca video
+        const stopVideo = () => {
+            videoElement.pause();
+        };
+
+        // Inicjalizacja zmiennych do detekcji zmian w żyroskopie
+        let lastAlpha = 0;
+        let lastBeta = 0;
+        let lastGamma = 0;
+
+        // Funkcja do detekcji zmiany w żyroskopie
+        const detectMovement = (event) => {
+            const { alpha, beta, gamma } = event;
+
+            // Sprawdzamy, czy zmieniły się wartości żyroskopu
+            if (
+                Math.abs(alpha - lastAlpha) > 5 || // zmiana w osi X (lewo/prawo)
+                Math.abs(beta - lastBeta) > 5 || // zmiana w osi Y (przód/tył)
+                Math.abs(gamma - lastGamma) > 5   // zmiana w osi Z (obrót)
+            ) {
+                // Jeśli tak, odtwarzamy wideo
+                playVideo();
+            } else {
+                // Jeśli nie, zatrzymujemy wideo
+                stopVideo();
+            }
+
+            // Aktualizacja ostatnich wartości żyroskopu
+            lastAlpha = alpha;
+            lastBeta = beta;
+            lastGamma = gamma;
+        };
+
+        // Sprawdzamy dostępność żyroskopu
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener("deviceorientation", detectMovement, true);
+        } else {
+            alert("Twoje urządzenie nie obsługuje żyroskopu.");
+        }
+    </script>
 
         <!-- Dane na dowodzie -->
         <section id="praw">
@@ -382,7 +439,7 @@ body, html {
     </a>
 
 
-    <link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <a class="buto" style="cursor: pointer; display: flex; align-items: center; padding: 10px 20px; border-radius: 10px; background-color: white; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-decoration: none; font-family: Arial, sans-serif;" onclick="confirmDelete()">
         <i class="fa-regular fa-trash-can" style="color: red; margin-right: 10px;"></i>
         <span style="color: red; font-size: 16px; font-weight: 550;">Usuń dokument</span>

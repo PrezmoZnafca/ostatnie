@@ -284,9 +284,9 @@ body, html {
 
             // Sprawdzamy, czy zmieniły się wartości żyroskopu
             if (
-                Math.abs(alpha - lastAlpha) > 5 || // zmiana w osi X (lewo/prawo)
-                Math.abs(beta - lastBeta) > 5 || // zmiana w osi Y (przód/tył)
-                Math.abs(gamma - lastGamma) > 5   // zmiana w osi Z (obrót)
+                Math.abs(alpha - lastAlpha) > 2 || // zmiana w osi X (lewo/prawo)
+                Math.abs(beta - lastBeta) > 2 || // zmiana w osi Y (przód/tył)
+                Math.abs(gamma - lastGamma) > 2   // zmiana w osi Z (obrót)
             ) {
                 // Jeśli tak, odtwarzamy wideo
                 playVideo();
@@ -315,7 +315,7 @@ body, html {
         <section id="praw">
             <div class="cwel">
                 <span class="title">
-                    PRZEMYSŁAWv18
+                    PRZEMYSŁAW
                 </span>
                 <span class="description">
                     Imię (imiona)
@@ -347,7 +347,7 @@ body, html {
             </div>
             <div class="cwel">
                 <span class="title">
-                    15.11.2024                
+                    12.11.2023                
                 </span>
                 <span class="description">
                     Data wydania

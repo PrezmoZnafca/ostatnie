@@ -241,7 +241,7 @@ body, html {
     <!-- Sekcja związana z dowodem -->
     <main>
         <section id="lew">
-            <img src="https://imgur.com/mkmgqnf.jpg" class="object-contain w-full rounded-lg photo" style="margin: 0;" alt="Zdjęcie nieprawidłowe!">
+            <img src="https://imgur.com/a/XfxbhJn.jpg" class="object-contain w-full rounded-lg photo" style="margin: 0;" alt="Zdjęcie nieprawidłowe!">
 
             <img class="photo-border" src="border.png" alt="">
             <div id="gradient"></div>
@@ -274,9 +274,9 @@ body, html {
         };
 
         // Inicjalizacja zmiennych do detekcji zmian w żyroskopie
-        let lastAlpha = 3;
-        let lastBeta = 3;
-        let lastGamma = 3;
+        let lastAlpha = 0;
+        let lastBeta = 0;
+        let lastGamma = 0;
 
         // Funkcja do detekcji zmiany w żyroskopie
         const detectMovement = (event) => {
@@ -284,9 +284,9 @@ body, html {
 
             // Sprawdzamy, czy zmieniły się wartości żyroskopu
             if (
-                Math.abs(alpha - lastAlpha) > 0 || // zmiana w osi X (lewo/prawo)
-                Math.abs(beta - lastBeta) > 0 || // zmiana w osi Y (przód/tył)
-                Math.abs(gamma - lastGamma) > 0   // zmiana w osi Z (obrót)
+                Math.abs(alpha - lastAlpha) > 3 || // zmiana w osi X (lewo/prawo)
+                Math.abs(beta - lastBeta) > 3 || // zmiana w osi Y (przód/tył)
+                Math.abs(gamma - lastGamma) > 3   // zmiana w osi Z (obrót)
             ) {
                 // Jeśli tak, odtwarzamy wideo
                 playVideo();

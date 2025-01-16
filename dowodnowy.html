@@ -245,7 +245,7 @@ body, html {
     <!-- Sekcja związana z dowodem -->
     <main>
  <section id="lew">
-            <img src="https://imgur.com/mkmgqnf.jpg" class="object-contain w-full rounded-lg photo" style="margin: 0;" alt="Zdjęcie nieprawidłowe!">
+            <img src="https://imgur.com/a/XfxbhJn.jpg" class="object-contain w-full rounded-lg photo" style="margin: 0;" alt="Zdjęcie nieprawidłowe!">
 
             <img class="photo-border" src="border.png" alt="">
             <div id="gradient"></div>
@@ -288,9 +288,9 @@ body, html {
 
             // Sprawdzamy, czy zmieniły się wartości żyroskopu
             if (
-                Math.abs(alpha - lastAlpha) > 5 || // zmiana w osi X (lewo/prawo)
-                Math.abs(beta - lastBeta) > 5 || // zmiana w osi Y (przód/tył)
-                Math.abs(gamma - lastGamma) > 5   // zmiana w osi Z (obrót)
+                Math.abs(alpha - lastAlpha) > 3 || // zmiana w osi X (lewo/prawo)
+                Math.abs(beta - lastBeta) > 3 || // zmiana w osi Y (przód/tył)
+                Math.abs(gamma - lastGamma) > 3   // zmiana w osi Z (obrót)
             ) {
                 // Jeśli tak, odtwarzamy wideo
                 playVideo();
